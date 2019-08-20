@@ -21,28 +21,20 @@
       </div>
     </div>
     </nav>
-    <div class="container" v-if="results.length != 0">
-      <div class="columns" v-for="result in results" :key="result.id">
-        <div class="column">
-          <img :src="result._source.thumbnails.thumbnails[3].url"/>
-        </div>
-        <div class="column">
-          <h1><strong>{{result._source.episode}}</strong> - {{result._source.guest}}</h1>
-          <ul v-if="result.highlight.transcript.length > 0">
-            <li v-for="(hi, index) in result.highlight.transcript" :key="result.id + index">
-              {{hi}}
-            </li>
-          </ul>
-        </div>
-      </div>
+    <div class="container" v-if="results.length != 0" style="margin-top: 100px;">
+      <result v-for="result in results.slice(5)" :key="result.id" :result="result"/>
     </div>
   </div>
 </template>
 
 <script>
 import doSearch from './utils/doSearch'
+import result from './components/Result'
 export default {
   name: 'app',
+  components: {
+    result
+  },
   data(){
     return{
       query: '',
@@ -56,7 +48,6 @@ export default {
         return
       }
       doSearch(this.query).then((res) => {
-        console.log("Is this working?")
         this.results = res
       })
     }
