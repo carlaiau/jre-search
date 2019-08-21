@@ -1,7 +1,7 @@
 <template>
     <div class="columns">
         <div class="column" v-if="id != 0">
-          <Player :ytid="id" ref="yt" @ready="onPlayerReady"></Player>
+          <Player :ytid="id" ref="yt" @ready="onPlayerReady" :playerVars="playerVars"></Player>
         </div>
         <div class="column">
             <h1 class="size-1 title">
@@ -37,27 +37,23 @@
 import tranConv from '../utils/transcriptConversion'
 import { Player } from 'vue-youtube-iframe-api'
 export default {
-    data(){
-        return {
-            offset: this.convert(this.result.highlight.transcript[0]).time,
-            id: this.result._source.id
-        }
-    },
-    components: {
-        Player
-    },
-    computed: {
-        ytParams(){
-            return {
-                start: this.offset
-            }
-        }
-    },
     props: {
         result: {
             required: true,
             type: Object
         }
+    },
+    data(){
+        return {
+            offset: this.convert(this.result.highlight.transcript[0]).time,
+            id: this.result._source.id,
+            playerVars: {
+                start: this.convert(this.result.highlight.transcript[0]).time
+            }
+        }
+    },
+    components: {
+        Player
     },
     methods: {
         convert(tran){
@@ -73,6 +69,10 @@ export default {
             // you can see the full list of methods available here
             // https://developers.google.com/youtube/iframe_api_reference?hl=fr#Playback_controls
         }
+    },
+    destroyed(){
+        console.log("are we destroying")
+        this.$refs = null
     }
 
 }
