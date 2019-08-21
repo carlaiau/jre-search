@@ -3,6 +3,7 @@
         <div class="hero-body">
             <div class="container">
                 <h1 class="title">JRE Search</h1>
+                <h2 class="subtitle">Early Experiment. 120 episodes indexed</h2>
                 <form @submit.prevent="runSearch">
                     <div class="field has-addons">
                         <div class="control">
