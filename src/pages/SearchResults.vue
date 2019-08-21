@@ -3,9 +3,9 @@
     <nav class="navbar is-fixed-top">
     <div class="container">
       <div class="navbar-brand">
-            <router-link :to="{name: 'Home'}">
-                <p><strong>JRE</strong> Search</p>
-            </router-link>
+          <router-link :to="{name: 'Home'}">
+              <p><strong>JRE</strong> Search</p>
+          </router-link>
       </div>
       <div class="navbar-end">
         <form @submit.prevent="runSearch">

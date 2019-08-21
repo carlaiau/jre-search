@@ -39,11 +39,12 @@ export default {
             type: Object
         }
     },
-    data(){
-        return {
-            offset: this.convert(this.result.highlight.transcript[0]).time,
-            id: this.result._source.id,
-            playerVars: {
+    computed: {
+        id(){
+            return this.result._source.id
+        },
+        playerVars(){
+            return {
                 start: this.convert(this.result.highlight.transcript[0]).time
             }
         }
@@ -60,15 +61,14 @@ export default {
         },
         onPlayerReady () {
             // you have access to the ref here
-            
+            //this.$refs.yt.player.loadVideoById(this.id
 
             // you can see the full list of methods available here
             // https://developers.google.com/youtube/iframe_api_reference?hl=fr#Playback_controls
         }
     },
     destroyed(){
-        console.log("are we destroying")
-        this.$refs = null
+        
     }
 
 }
