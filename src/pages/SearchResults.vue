@@ -24,7 +24,7 @@
     </div>
     </nav>
     <div class="container mainResults" v-if="results.length != 0">
-      <result v-for="result in results.slice(5)" :key="result.id" :result="result"/>
+      <result v-for="result in results" :key="result.id" :result="result"/>
     </div>
 </div>
 </template>

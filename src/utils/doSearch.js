@@ -28,7 +28,6 @@ export default function (searchTerm){
           }
       }
     }).then(function(response){ 
-        console.log(response.hits.hits)
         resolve(response.hits.hits)
     }).catch(function(error){
       console.log(error)

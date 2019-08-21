@@ -1,7 +1,7 @@
 <template>
     <div class="columns is-vcentered">
         <div class="column" v-if="id != 0">
-          <Player :ytid="id" ref="yt" @ready="onPlayerReady" :playerVars="playerVars"></Player>
+          <Player :ytid="id" ref="yt" @ready="onPlayerReady"></Player>
         </div>
         <div class="column">
             <h1 class="title is-size-2">
@@ -42,11 +42,6 @@ export default {
     computed: {
         id(){
             return this.result._source.id
-        },
-        playerVars(){
-            return {
-                start: this.convert(this.result.highlight.transcript[0]).time
-            }
         }
     },
     components: {

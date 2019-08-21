@@ -7,7 +7,7 @@ export default function (highlight){
     let timestamps = highlight.match(regex);
 
     const clean = highlight.replace(regex, '')
-    const time = timestamps[0].replace(/[^\d+]/g, '') - 2
+    const time = timestamps[0].replace(/[^\d+]/g, '') - 1
     
     return {
         clean,
