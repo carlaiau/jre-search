@@ -1,27 +1,23 @@
 <template>
-    <div class="columns">
+    <div class="columns is-vcentered">
         <div class="column" v-if="id != 0">
           <Player :ytid="id" ref="yt" @ready="onPlayerReady" :playerVars="playerVars"></Player>
         </div>
         <div class="column">
-            <h1 class="size-1 title">
+            <h1 class="title is-size-2">
                 {{result._source.guest}}
             </h1>
-            <h2 class="subtitle">
-              {{result._source.episode}}
-            </h2>
           <ul v-if="result.highlight.transcript.length > 0">
             <li v-for="(hi, index) in result.highlight.transcript" :key="index">
                 <article class="media">
-                    <figure class="media-left">
-                        <a @click="changeTime(convert(hi).time)">
-                            +
-                        </a>
-                    </figure>
                     <div class="media-content">
                         <div class="content">
-                            <p v-html="convert(hi).clean">
-                                {{convert(hi).clean}}
+                            <p class="is-size-6">
+                                <a @click="changeTime(convert(hi).time)">
+                                <span v-html="convert(hi).clean">
+                                    {{convert(hi).clean}}
+                                </span>
+                                </a>
                             </p>
                         </div>
                     </div>
@@ -77,7 +73,7 @@ export default {
 
 }
 </script>
-<style>
+<style lang="less"> 
 .box{
     margin-bottom: 20px;
 }
@@ -95,6 +91,34 @@ em{
 }
 .media{
     margin-bottom: 10px;
+}
+.media-content{
+    .content{
+        a{
+            color: inherit;
+        }
+        span{
+            display: inline;
+            background: #fff;
+            padding: 0;
+            line-height:2em;
+            transition: 0.5s;
+            border-bottom: 2px solid transparent;
+            &:hover{
+                border-bottom: 2px solid hsl(48, 100%, 67%);
+                em{
+                    background: hsl(48, 100%, 67%);
+                }
+            }
+            em{
+                background: #209cee;
+                color: #fff;
+                font-weight: normal;
+                padding: 0 2px;
+                transition: 0.5s;
+            }
+        }
+    }
 }
 
 </style>

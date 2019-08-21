@@ -4,7 +4,7 @@
     <div class="container">
       <div class="navbar-brand">
             <router-link :to="{name: 'Home'}">
-                <p><strong>JRE</strong> Alpha Search</p>
+                <p><strong>JRE</strong> Search</p>
             </router-link>
       </div>
       <div class="navbar-end">
@@ -14,7 +14,7 @@
               <input class="input" type="text" placeholder="Pull that up Jamie" v-model="newQuery">
             </div>
             <div class="control">
-              <a class="button is-info" @click="runSearch">
+              <a class="button is-success" @click="runSearch">
                 Search
               </a>
             </div>
@@ -23,7 +23,7 @@
       </div>
     </div>
     </nav>
-    <div class="container" v-if="results.length != 0" style="margin-top: 100px;">
+    <div class="container mainResults" v-if="results.length != 0">
       <result v-for="result in results.slice(5)" :key="result.id" :result="result"/>
     </div>
 </div>
@@ -79,7 +79,17 @@ export default {
 </script>
 
 <style lang="less">
+body{
+  background: #fafafa;
+}
+.container.mainResults{
+  margin-top: 62px;
+  padding: 50px 0;
+}
 nav.navbar{
+  a{
+    color: #000;
+  }
   display: block;
   box-shadow: 0px 1px 2px rgba(0,0,0,0.1);
   p{
