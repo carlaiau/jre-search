@@ -1,4 +1,9 @@
-# discourse
+# jre-search
+
+Alpha
+Vue frontend, not mobile optimised. 
+Data retrieved via YouTube captions and feed into ElasticSearch.
+Titles, or meta data not indexed.
 
 ## Project setup
 ```
